@@ -1,5 +1,6 @@
 const newYear = "1 jan 2023";
 const monthsEL = document.getElementById("months");
+const weeksEL = document.getElementById("weeks");
 const daysEL = document.getElementById("days");
 const hoursEL = document.getElementById("hours");
 const minsEL = document.getElementById("mins");
@@ -12,12 +13,14 @@ function countDown() {
   const seconds = (YearsDate - currentDate) / 1000;
   const baseDays = Math.floor(seconds / 3600 / 24);
   const months = Math.floor(baseDays / 30);
-  const days = Math.floor(baseDays % 30);
+  const days = Math.floor(baseDays % 30) % 7;
+  const weeks = Math.floor(Math.floor(baseDays % 30) / 7);
   const hours = Math.floor(seconds / 3600) % 24;
   const minutes = Math.floor(seconds / 60) % 60;
   const seconds_calc = Math.floor(seconds % 60);
   monthsEL.innerHTML = formatTime(months);
   daysEL.innerHTML = formatTime(days);
+  weeksEL.innerHTML = formatTime(weeks);
   hoursEL.innerHTML = formatTime(hours);
   minsEL.innerHTML = formatTime(minutes);
   secondsEL.innerHTML = formatTime(seconds_calc);
