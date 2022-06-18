@@ -18,12 +18,16 @@ function countDown() {
   const hours = Math.floor(seconds / 3600) % 24;
   const minutes = Math.floor(seconds / 60) % 60;
   const seconds_calc = Math.floor(seconds % 60);
-  monthsEL.innerHTML = months;
-  weeksEL.innerHTML = weeks;
-  daysEL.innerHTML = days;
-  hoursEL.innerHTML = hours;
-  minsEL.innerHTML = minutes;
-  secondsEL.innerHTML = seconds_calc; 
+  monthsEL.innerHTML = formatTime(months);
+  weeksEL.innerHTML = formatTime(weeks);
+  daysEL.innerHTML = formatTime(days);
+  hoursEL.innerHTML = formatTime(hours);
+  minsEL.innerHTML = formatTime(minutes);
+  secondsEL.innerHTML = formatTime(seconds_calc);
+}
+
+function formatTime(time) {
+  return time < 10 ? `0${time}` : time;
 }
 
 countDown();
